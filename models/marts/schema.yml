@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: customer_summary
+    description: "Агрегирана информация за всеки клиент"
+    columns:
+      - name: account_id
+        tests:
+          - unique
+          - not_null
+      - name: total_spent
+        tests:
+          - not_null
+      - name: total_cards
+        tests:
+          - not_null
+
+  - name: monthly_transactions
+    description: "Месечна агрегация на транзакции по тип"
+    columns:
+      - name: transaction_type
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['PURCHASE', 'WITHDRAWAL', 'TRANSFER']

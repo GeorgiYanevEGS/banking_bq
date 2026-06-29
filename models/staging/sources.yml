@@ -6,5 +6,20 @@ sources:
     dataset: banking_raw
     tables:
       - name: accounts
+        columns:
+          - name: account_id
+            tests:
+              - unique
+              - not_null
       - name: cards
+        columns:
+          - name: card_id
+            tests:
+              - unique
+              - not_null
       - name: transactions
+        columns:
+          - name: transaction_id
+            tests:
+              - unique
+              - not_null
