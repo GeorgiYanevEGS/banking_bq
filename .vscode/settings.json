@@ -1,0 +1,4 @@
+{
+    "dbt.dbtPythonPathOverride": "/home/georgiy/airflow/venv/bin/python",
+    "dbt.dbtPath": "/home/georgiy/airflow/venv/bin/dbt"
+}

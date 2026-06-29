@@ -12,9 +12,10 @@ models:
       - name: account_type
         tests:
           - accepted_values:
-              values: ['CURRENT', 'SAVINGS']
+              arguments:
+                values:['CURRENT', 'SAVINGS']
 
-  - name: stg_cards
+  - name: stg_cards 
     description: "Staging таблица за карти"
     columns:
       - name: card_id
@@ -25,8 +26,9 @@ models:
         tests:
           - not_null
           - relationships:
-              to: ref('stg_accounts')
-              field: account_id
+              arguments:
+                to: ref('stg_accounts')
+                field: account_id
 
   - name: stg_transactions
     description: "Staging таблица за транзакции"
@@ -39,8 +41,9 @@ models:
         tests:
           - not_null
           - relationships:
-              to: ref('stg_accounts')
-              field: account_id
+              arguments:
+                to: ref('stg_accounts')
+                field: account_id
       - name: amount
         tests:
           - not_null
