@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: stg_accounts
+    description: "Staging таблица за акаунти - почистени и стандартизирани"
+    columns:
+      - name: account_id
+        description: "Уникален идентификатор на акаунт"
+        tests:
+          - unique
+          - not_null
+      - name: account_type
+        tests:
+          - accepted_values:
+              values: ['CURRENT', 'SAVINGS']
+
+  - name: stg_cards
+    description: "Staging таблица за карти"
+    columns:
+      - name: card_id
+        tests:
+          - unique
+          - not_null
+      - name: account_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_accounts')
+              field: account_id
+
+  - name: stg_transactions
+    description: "Staging таблица за транзакции"
+    columns:
+      - name: transaction_id
+        tests:
+          - unique
+          - not_null
+      - name: account_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_accounts')
+              field: account_id
+      - name: amount
+        tests:
+          - not_null

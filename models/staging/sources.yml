@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: banking_raw
+    project: project-b3789463-f591-4856-839
+    dataset: banking_raw
+    tables:
+      - name: accounts
+      - name: cards
+      - name: transactions
