@@ -6,10 +6,10 @@
 SELECT
     card_id,
     account_id,
-    UPPER(card_type)                        AS card_type,
-    card_number,
+    card_no,
+    UPPER(card_type)                                AS card_type,
     expiry_date,
-    is_active,
+    UPPER(status)                                   AS status,
     CASE WHEN expiry_date >= CURRENT_DATE()
-         THEN TRUE ELSE FALSE END           AS is_valid
+         THEN TRUE ELSE FALSE END                   AS is_valid
 FROM {{ source('banking_raw', 'cards') }}

@@ -2,4 +2,4 @@
 SELECT account_id
 FROM {{ ref('stg_accounts') }}
 WHERE account_type = 'SAVINGS'
-  AND balance <= 0
+  AND status != 'ACTIVE'

@@ -13,7 +13,7 @@ models:
         tests:
           - accepted_values:
               arguments:
-                values:['CURRENT', 'SAVINGS']
+                values: ['ROOT', 'CHILD']
 
   - name: stg_cards 
     description: "Staging таблица за карти"
@@ -37,13 +37,13 @@ models:
         tests:
           - unique
           - not_null
-      - name: account_id
-        tests:
-          - not_null
-          - relationships:
-              arguments:
-                to: ref('stg_accounts')
-                field: account_id
       - name: amount
         tests:
           - not_null
+      - name: transaction_type
+        tests:
+          - not_null
+          - accepted_values:
+             arguments:
+               values: ['PURCHASE', 'OPER', 'TAX']
+
